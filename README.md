@@ -23,9 +23,9 @@ Por ultimo se tiene la capa de base de datos que contiene dos servicios, una Ama
 
 
 ### Recomendación de seguridad
-Una recomendación de seguridad para la arquitectura seria utilizar algún servicio como Cognito que permita la generación de API keys que permitan la autenticación cuando se da comunicación entre servicios fuera de la VPC, por ejemplo con los legacy services, además el servicio de API Gateway puede ser configurado para verificar las credenciales por medio de Lambda Authorizers.
+Una recomendación de seguridad para la arquitectura seria utilizar algún servicio como Cognito que permita la generación de API keys para realizar la autenticación cuando se da comunicación entre servicios fuera de la VPC, por ejemplo con los legacy services, además el servicio de API Gateway puede ser configurado para verificar las credenciales por medio de Lambda Authorizers, esta medida ayuda a que al sistema dentro del VPC solo ingresen request de servicios autorizados, de igual forma si la comunicación es hacia afuera, por ejemplo con los legacy services ellos también deben permitir solo request de servicios autorizados, ya que si los servicios legacy se ven comprometidos puede llegar a afectar el sistema dentro de la VPC
 
-Otra recomendación de seguridad que puede ser más para tomar acciones reactivas en lugar de preventivas, es el uso de servicios de monitoreo, en este caso que hay varios servicios de amazon involucrados se puede utilizar Cloudwatch permitiendo hacer monitoreo de los request e incluso generando alarmas si hay volumenes de accesos o request en diferentes servicios como el API Gateway y la base de datos.
+Otra recomendación de seguridad que puede ser más para tomar acciones reactivas en lugar de preventivas, es el uso de servicios de monitoreo, en este caso que hay varios servicios de amazon involucrados se puede utilizar Cloudwatch permitiendo hacer monitoreo de los request e incluso generando alarmas si hay volumenes altos de accesos o request en diferentes servicios como el API Gateway o la base de datos, permitiendo tomar acciones de defensa en cortos periodos de tiempo.
 
 ### Links importantes
 [Omnione OpenDID](https://opendid.omnione.net/community/)
